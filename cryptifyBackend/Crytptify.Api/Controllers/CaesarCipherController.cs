@@ -7,19 +7,20 @@ namespace Crytptify.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AesController : ControllerBase
+    public class CaesarCipherController : ControllerBase
     {
-        private readonly IAesService _aesService;
-        public AesController(IAesService aesService)
+        private readonly ICaesarCipherService _caesarCipherService;
+        public CaesarCipherController(ICaesarCipherService caesarCipherService)
         {
-            _aesService = aesService;
+            _caesarCipherService = caesarCipherService;
         }
+
         [HttpPost("encrypt")]
-        public IActionResult Encrypt([FromBody] AesEncryptDto model)
+        public IActionResult Encrypt([FromBody] EncryptCaesarCipherDto model)
         {
             try
             {
-                var response = _aesService.Encrypt(model);
+                var response = _caesarCipherService.Encrypt(model);
                 return Ok(response);
             }
             catch (Exception ex)
@@ -27,12 +28,13 @@ namespace Crytptify.Api.Controllers
                 return BadRequest(new GenericResponseDto(false, "Error encrypting: " + ex.GetBaseException().Message, null));
             }
         }
+
         [HttpPost("decrypt")]
-        public IActionResult Decrypt([FromBody] AesDescryptDto model)
+        public IActionResult Decrypt([FromBody] DecryptCaesarCipherDto model)
         {
             try
             {
-                var response = _aesService.Decrypt(model);
+                var response = _caesarCipherService.Decrypt(model);
                 return Ok(response);
             }
             catch (Exception ex)

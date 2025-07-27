@@ -26,7 +26,7 @@ namespace Crytptify.Api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status400BadRequest, new GenericResponseDto(false, "Error encoding to Base64: " + ex.GetBaseException().Message, null));
+                return BadRequest(new GenericResponseDto(false, "Error encoding to Base64: " + ex.GetBaseException().Message, null));
             }
         }
 
@@ -40,7 +40,7 @@ namespace Crytptify.Api.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status400BadRequest, new GenericResponseDto(false, "Error decoding from Base64: " + ex.GetBaseException().Message, null));
+                return BadRequest(new GenericResponseDto(false, "Error decoding from Base64: " + ex.GetBaseException().Message, null));
             }
         }
     }

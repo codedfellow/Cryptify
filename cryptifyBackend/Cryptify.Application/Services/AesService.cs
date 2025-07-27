@@ -44,7 +44,7 @@ namespace Cryptify.Application.Services
                 aes.IV = ivBytes;
                 using var decryptor = aes.CreateDecryptor();
                 byte[] decryptedBytes = decryptor.TransformFinalBlock(cipherBytes, 0, cipherBytes.Length);
-                return new GenericResponseDto(true, "Encoding successful", Encoding.UTF8.GetString(decryptedBytes));
+                return new GenericResponseDto(true, "Decryption successful", Encoding.UTF8.GetString(decryptedBytes));
             }
             catch (CryptographicException ex)
             {

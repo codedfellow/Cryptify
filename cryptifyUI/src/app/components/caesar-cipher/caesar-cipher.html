@@ -1,0 +1,59 @@
+<div class="caesar-cipher-container">
+    <app-menu></app-menu>
+    <hr>
+    <h4>About Caesar Cipher</h4>
+    <p>Caesar Cipher is a classic, educational encryption method that shifts each letter in your text by a fixed number of positions in the alphabet. Used by Julius Caesar to protect messages, it’s a simple yet fascinating introduction to cryptography. While not secure for modern use, it’s perfect for learning how ciphers work.</p>
+    <h4>How It Works</h4>
+    <p>Each letter in the plaintext is replaced by a letter a fixed number of positions away in the alphabet (e.g., a shift of 3 turns 'A' into 'D', 'B' into 'E'). Non-letters like spaces or punctuation remain unchanged. To decrypt, the letters are shifted back by the same number of positions.</p>
+    <h4>Key Parameter</h4>
+    <div>
+        <ul>
+            <li>Shift: An integer (0–25) that determines how many positions each letter is shifted. The same shift value is used for both encryption and decryption.</li>
+        </ul>
+    </div>
+    <h4>Why Caesar Cipher?</h4>
+    <p>It’s a fun and accessible way to explore cryptography basics. In this app, enter your text and a shift value to encrypt or decrypt, and see the cipher in action!</p>
+    <div>
+        <p class="text-center">
+            <button ngClass="btn text-white me-2 {{ isEncryptMode ? 'btn-primary' : 'btn-success'}}"
+                (click)="enterEncryptionMode()">Encrypt</button>
+            <button ngClass="btn text-white {{ !isEncryptMode ? 'btn-primary' : 'btn-success'}}"
+                (click)="enterDecryptionMode()">Decrypt</button>
+        </p>
+    </div>
+    <div class="form-body">
+        <div class="form-container">
+            @if(isEncryptMode) {
+            <h2 class="text-center mb-4">Caesar Cipher Encryption</h2>
+            <form id="aesEncryptForm" [formGroup]="encryptForm" (ngSubmit)="onEncrypt()">
+                <div class="mb-3">
+                    <label for="plainText" class="form-label">Plaintext</label>
+                    <textarea class="form-control" formControlName="plainText" id="plainText" rows="4" placeholder="Enter text to encrypt"
+                        required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="shift" class="form-label">Shift (1 - 25)</label>
+                    <input type="number" class="form-control" formControlName="shift" id="shift" placeholder="Enter Shift" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-custom-primary">Encrypt</button>
+            </form>
+            }
+            @else{
+            <h2 class="text-center mb-4">Caesar Cipher Decryption</h2>
+            <form id="encryptForm" [formGroup]="decyptForm" (ngSubmit)="onDecrypt()">
+                <div class="mb-3">
+                    <label for="cipherText" class="form-label">Cipher Text</label>
+                    <textarea class="form-control" formControlName="cipherText" id="cipherText" rows="4"
+                        placeholder="Enter text to encrypt" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="shift" class="form-label">Shift (1 - 25)</label>
+                    <input type="number" class="form-control" formControlName="shift" id="shift" placeholder="Enter Shift" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-custom-primary">Decrypt</button>
+            </form>
+            }
+        </div>
+    </div>
+    <app-result-output [result]="result"></app-result-output>
+</div>
