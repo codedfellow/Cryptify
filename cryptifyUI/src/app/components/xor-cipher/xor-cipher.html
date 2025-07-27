@@ -1,0 +1,59 @@
+<div class="xor-cipher-container">
+    <app-menu></app-menu>
+    <hr>
+    <h4>About XOR Cipher</h4>
+    <p>XOR Cipher is a simple, educational encryption method that uses a bitwise XOR operation to transform your text with a key. While not secure for real-world use, it’s an excellent way to learn about bitwise operations and basic cryptography concepts.</p>
+    <h4>How It Works</h4>
+    <p>Each character in your text is combined with a character from the key using the XOR operation, producing a new character. If the key is shorter than the text, it repeats. The same process (with the same key) reverses the operation for decryption. The output is Base64-encoded for display and compatibility.</p>
+    <h4>Key Parameter</h4>
+    <div>
+        <ul>
+            <li>Key: Any string used to XOR with your text. The same key is used for both encryption and decryption.</li>
+        </ul>
+    </div>
+    <h4>Why XOR Cipher?</h4>
+    <p>It’s a fun, beginner-friendly way to explore cryptography and bitwise operations. Enter your text and a key to encrypt or decrypt, and see the XOR magic in action!</p>
+    <div>
+        <p class="text-center">
+            <button ngClass="btn text-white me-2 {{ isEncryptMode ? 'btn-primary' : 'btn-success'}}"
+                (click)="enterEncryptionMode()">Encrypt</button>
+            <button ngClass="btn text-white {{ !isEncryptMode ? 'btn-primary' : 'btn-success'}}"
+                (click)="enterDecryptionMode()">Decrypt</button>
+        </p>
+    </div>
+    <div class="form-body">
+        <div class="form-container">
+            @if(isEncryptMode) {
+            <h2 class="text-center mb-4">Xor Cipher Encryption</h2>
+            <form id="aesEncryptForm" [formGroup]="encryptForm" (ngSubmit)="onEncrypt()">
+                <div class="mb-3">
+                    <label for="plainText" class="form-label">Plaintext</label>
+                    <textarea class="form-control" formControlName="plainText" id="plainText" rows="4" placeholder="Enter text to encrypt"
+                        required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="key" class="form-label">Key</label>
+                    <input type="text" class="form-control" formControlName="key" id="key" placeholder="Enter Key" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-custom-primary">Encrypt</button>
+            </form>
+            }
+            @else{
+            <h2 class="text-center mb-4">Xor Cipher Decryption</h2>
+            <form id="encryptForm" [formGroup]="decyptForm" (ngSubmit)="onDecrypt()">
+                <div class="mb-3">
+                    <label for="cipherText" class="form-label">Cipher Text</label>
+                    <textarea class="form-control" formControlName="cipherText" id="cipherText" rows="4"
+                        placeholder="Enter text to encrypt" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="key" class="form-label">Key</label>
+                    <input type="text" class="form-control" formControlName="key" id="key" placeholder="Enter Key" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-custom-primary">Decrypt</button>
+            </form>
+            }
+        </div>
+    </div>
+    <app-result-output [result]="result"></app-result-output>
+</div>

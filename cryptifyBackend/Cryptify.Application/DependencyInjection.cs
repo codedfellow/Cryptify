@@ -25,6 +25,7 @@ namespace Cryptify.Application
             services.AddScoped<IBase64Service, Base64Service>();
             services.AddScoped<IAesService, AesService>();
             services.AddScoped<ICaesarCipherService, CaesarCipherService>();
+            services.AddScoped<IXorCipherService, XorCipherService>();
 
             return services;
         }
