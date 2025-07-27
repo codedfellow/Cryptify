@@ -7,7 +7,7 @@ import { Component, ElementRef, Input, input, ViewChild } from '@angular/core';
   styleUrl: './result-output.scss'
 })
 export class ResultOutput {
-  @Input() result: string | null = null;
+  @Input() result: any | null = null;
   @ViewChild('outputText') outputTextRef?: ElementRef<HTMLDivElement>;
   @ViewChild('copyFeedback') copyFeedbackRef?: ElementRef<HTMLDivElement>;
 

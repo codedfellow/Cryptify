@@ -1,0 +1,74 @@
+<div class="aes-container">
+    <h4>About AES Encryption</h4>
+    <p>AES (Advanced Encryption Standard) is a secure, widely-used symmetric encryption algorithm that protects data by
+        transforming it into an unreadable format, called ciphertext. Only those with the correct key can decrypt it
+        back to the original plaintext. AES is trusted in applications like secure messaging, file protection, and
+        online banking.</p>
+    <h4>How It Works</h4>
+    <p>AES encrypts data in fixed 16-byte blocks using a secret key (128, 192, or 256 bits). In CBC mode (used here),
+        each block is combined with the previous block's ciphertext, starting with a random Initialization Vector (IV).
+        This ensures that identical plaintexts produce different ciphertexts, enhancing security.</p>
+    <h4>Key Parameters</h4>
+    <div>
+        <ul>
+            <li>Key: A secret string (16, 24, or 32 bytes, Base64-encoded) used for both encryption and decryption. It
+                must be kept secure.</li>
+            <li>Initialization Vector (IV): A random 16-byte value (Base64-encoded) generated during encryption. It’s
+                required for decryption but doesn’t need to be secret.</li>
+            <li>Plaintext/Ciphertext: The input text to encrypt or the encrypted output to decrypt.</li>
+        </ul>
+    </div>
+    <h4>Why AES?</h4>
+    <p>AES is fast, secure, and an industry standard, making it ideal for protecting sensitive data. In this app, enter
+        your text and key to encrypt, and use the same key with the provided IV to decrypt.</p>
+    <p>Some sample 16/24/32 bytes Base64 encoded strings you can use as keys include: &nbsp; <strong>aGVsbG9UaGVyZU15UGVvcGxlT2ZOaWdl, d2VsY29tZXRvbmlnZXJpYW9mdGhlZ29v, Y29kZWRmZWxsb3dvbnRoaXN0aGVoYWNr</strong></p>
+    <div>
+        <p class="text-center">
+            <button ngClass="btn text-white me-2 {{ isEncryptMode ? 'btn-primary' : 'btn-success'}}"
+                (click)="enterEncryptionMode()">Encrypt</button>
+            <button ngClass="btn text-white {{ !isEncryptMode ? 'btn-primary' : 'btn-success'}}"
+                (click)="enterDecryptionMode()">Decrypt</button>
+        </p>
+    </div>
+    <div class="form-body">
+        <div class="form-container">
+            @if(isEncryptMode) {
+            <h2 class="text-center mb-4">AES Encryption</h2>
+            <form id="aesEncryptForm" [formGroup]="encryptForm" (ngSubmit)="onEncrypt()">
+                <div class="mb-3">
+                    <label for="plainText" class="form-label">Plaintext</label>
+                    <textarea class="form-control" formControlName="plainText" id="plainText" rows="4" placeholder="Enter text to encrypt"
+                        required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="key" class="form-label">Key (Base64-encoded, 16/24/32 bytes)</label>
+                    <input type="text" class="form-control" formControlName="key" id="key" placeholder="Enter Base64 key" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-custom-primary">Encrypt</button>
+            </form>
+            }
+            @else{
+            <h2 class="text-center mb-4">AES Decryption</h2>
+            <form id="aesEncryptForm" [formGroup]="decyptForm" (ngSubmit)="onDecrypt()">
+                <div class="mb-3">
+                    <label for="cipherText" class="form-label">Cipher Text</label>
+                    <textarea class="form-control" formControlName="cipherText" id="cipherText" rows="4"
+                        placeholder="Enter text to encrypt" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="key" class="form-label">Key (Base64-encoded, 16/24/32 bytes)</label>
+                    <input type="text" class="form-control" formControlName="key" id="key" placeholder="Enter Base64 key" required>
+                </div>
+                <div class="mb-3">
+                    <label for="iv" class="form-label">Iv</label>
+                    <input type="text" class="form-control" formControlName="iv" id="iv" placeholder="Enter Iv" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-custom-primary">Decrypt</button>
+            </form>
+            }
+        </div>
+    </div>
+    <app-result-output [result]="result"></app-result-output>
+    <hr>
+    <app-menu></app-menu>
+</div>
