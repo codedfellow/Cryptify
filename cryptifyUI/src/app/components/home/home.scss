@@ -1,0 +1,18 @@
+.home-container{
+    min-height: 90vh;
+}
+
+.home-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto 20px auto;
+}
+
+#logo{
+    max-height: 50px;
+}
+
+.home-content{
+    margin: 10px;
+}

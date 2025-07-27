@@ -1,0 +1,48 @@
+<div class="base64-container">
+    <div>
+        <h4>What is Base64 Encoding and Decoding?</h4>
+        <p>
+            Base64 is a method for converting binary data into a text format using a set of 64 printable ASCII characters (A-Z, a-z, 0-9, +, /). It’s widely used to encode data, such as images or files, so it can be safely transmitted over text-based systems like email, APIs, or JSON. Encoding transforms data into a Base64 string, while decoding reverses the process, restoring the original data. While not encryption (it doesn’t use a key), Base64 is a key tool for data compatibility in modern applications.
+        </p>
+    </div>
+    <div>
+        <p class="text-center">
+            <button ngClass="btn text-white me-2 {{ isEncodingMode ? 'btn-primary' : 'btn-success'}}"
+                (click)="enterEncodingMode()">Encode to Base64</button>
+            <button ngClass="btn text-white {{ !isEncodingMode ? 'btn-primary' : 'btn-success'}}"
+                (click)="enterDecodingMode()">Decode Base64</button>
+        </p>
+    </div>
+    <hr>
+    @if (isEncodingMode) {
+    <h4 class="text-center text-primary">Encode String to Base64</h4>
+    <form class="base64-form" [formGroup]="encodingForm" (ngSubmit)="onEncode()">
+        <div class="me-2">
+            <label for="textToEncode" class="form-label col-auto">Text</label>
+        </div>
+        <div class="me-2">
+            <input type="text" formControlName="textToEncode" class="form-control col-auto" id="textToEncode">
+        </div>
+        <div class="">
+            <button type="submit" [disabled]="encodingForm.invalid" class="btn btn-primary mb-3">Encode</button>
+        </div>
+    </form>
+    }
+    @else {
+        <h4 class="text-center text-primary">Decode Base64 string</h4>
+        <form class="base64-form" [formGroup]="decodingForm" (ngSubmit)="onDecode()">
+            <div class="me-2">
+                <label for="base64Text" class="form-label col-auto">Text</label>
+            </div>
+            <div class="me-2">
+                <input type="text" formControlName="base64Text" class="form-control col-auto" id="base64Text">
+            </div>
+            <div class="">
+                <button type="submit" [disabled]="decodingForm.invalid" class="btn btn-primary mb-3">Decode</button>
+            </div>
+        </form>
+    }
+    <app-result-output [result]="result"></app-result-output>
+    <hr>
+    <app-menu></app-menu>
+</div>

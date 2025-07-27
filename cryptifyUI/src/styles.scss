@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+// primary:  2d3142
+// secondary:  bfc0c0
+// success: 4f5d75
+// warning: ef8354
+
+$primary: #2d3142;
+$secondary: #bfc0c0;
+$success: #4f5d75;
+$info: #ef8354;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+* {
+    margin: 0;
+    padding: 0;
+    margin: 0;
+}
