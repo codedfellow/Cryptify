@@ -9,3 +9,43 @@
     // align-items: center;
     justify-content: center;
 }
+
+.form-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.form-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.form-label {
+    font-weight: 500;
+}
+
+.form-control {
+    border-radius: 4px;
+}
+
+.btn-custom-primary {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+@media (max-width: 576px) {
+    .form-container {
+        padding: 15px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+    }
+}
