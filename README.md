@@ -56,7 +56,7 @@ cd Cryptify
 ### 2. Set Up and Run the Backend (.NET 9 Web API)
 1. **Navigate to the Backend Folder**:
    ```bash
-   cd criyptifyBackend
+   cd criyptifyBackend/Crytptify.Api
    ```
 2. **Restore Dependencies**:
    ```bash
@@ -93,7 +93,7 @@ cd Cryptify
    - Open `cryptifyUI/public/configurations/config.json` and ensure the `apiUrl` matches one of the backend URLs:
      ```json
      {
-       "apiUrl": "https://localhost:7004"
+       "apiUrl": "http://localhost:5275"
      }
      ```
      - Use `https://localhost:7004` for HTTPS (recommended) or `http://localhost:5275` for HTTP.
@@ -114,9 +114,8 @@ cd Cryptify
 - **Backend Fails to Start**: Check for port conflicts (7004 or 5275) or missing .NET 9 SDK.
 - **Frontend API Calls Fail**: Verify the `apiUrl` in `frontend/src/configurations/config.json` matches the backend URL.
 - **Angular Build Issues**: Ensure Node.js 20.x and Angular CLI 20.x are installed. Clear the npm cache (`npm cache clean --force`) if `npm install` fails.
-- **Deep Links Don’t Work**: Confirm `app.MapFallbackToFile("index.html")` is in `Program.cs` and `index.html` is in `wwwroot`.
 
 ## Contact
-For issues or contributions, please open an issue on the repository or contact the team at [your-email@example.com].
+For issues or contributions, please open an issue on the repository or contact me at aghaulorelvis@gmail.com.
 
 Happy coding, and enjoy exploring cryptography with Cryptify!
