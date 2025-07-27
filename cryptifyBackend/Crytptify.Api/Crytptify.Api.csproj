@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Cryptify.Infrastructure\Cryptify.Infrastructure.csproj" />
   </ItemGroup>
 
