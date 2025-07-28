@@ -7,6 +7,7 @@ Cryptify is a web application that enables users to encrypt and decrypt text usi
 - **User-Friendly Interface**: A responsive Angular frontend with Bootstrap 5 forms and a clean output display with copy-to-clipboard functionality.
 - **API-Driven Backend**: A .NET 9 Web API with Swagger UI for easy endpoint exploration.
 - **Configurable**: Backend URL is configurable via a `config.json` file in the Angular project.
+- The project's hosted link is [Here](https://cryptify-gse8hrghashxb0hp.canadacentral-01.azurewebsites.net/home)
 
 ## Prerequisites
 
