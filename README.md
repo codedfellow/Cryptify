@@ -56,7 +56,7 @@ cd Cryptify
 ### 2. Set Up and Run the Backend (.NET 9 Web API)
 1. **Navigate to the Backend Folder**:
    ```bash
-   cd criyptifyBackend/Crytptify.Api
+   cd cryptifyBackend/Cryptify.Api
    ```
 2. **Restore Dependencies**:
    ```bash
